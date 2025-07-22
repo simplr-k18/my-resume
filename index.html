@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rishanth Gautam Kalicheti - Senior Data Architect</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: #1a1a1a;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        
+        .resume-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+            position: relative;
+        }
+        
+        .resume-container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 6px;
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+            color: white;
+            padding: 50px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+        
+        .name {
+            font-size: 3.2em;
+            font-weight: 700;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 2;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .title {
+            font-size: 1.4em;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 25px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95em;
+            opacity: 0.9;
+        }
+        
+        .main-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 0;
+            min-height: 800px;
+        }
+        
+        .sidebar {
+            background: #f8fafc;
+            padding: 40px 35px;
+            border-right: 1px solid #e2e8f0;
+        }
+        
+        .content {
+            padding: 40px 45px;
+        }
+        
+        .section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            font-size: 1.3em;
+            font-weight: 600;
+            color: #2563eb;
+            margin-bottom: 20px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .section-title::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 2px;
+        }
+        
+        .impact-metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .metric-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 25px;
+            border-radius: 12px;
+            text-align: center;
+            transform: translateY(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .metric-card:hover {
+            transform: translateY(-5px);
+        }
+        
+        .metric-number {
+            font-size: 2.2em;
+            font-weight: 700;
+            margin-bottom: 5px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        .metric-label {
+            font-size: 0.9em;
+            opacity: 0.9;
+            font-weight: 500;
+        }
+        
+        .experience-item, .education-item {
+            margin-bottom: 35px;
+            position: relative;
+            padding-left: 25px;
+        }
+        
+        .experience-item::before, .education-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 8px;
+            width: 10px;
+            height: 10px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            border: 3px solid white;
+            box-shadow: 0 0 0 2px #667eea;
+        }
+        
+        .job-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #1e293b;
+            margin-bottom: 5px;
+        }
+        
+        .company {
+            font-weight: 500;
+            color: #2563eb;
+            margin-bottom: 3px;
+        }
+        
+        .duration {
+            font-size: 0.9em;
+            color: #64748b;
+            margin-bottom: 15px;
+            font-style: italic;
+        }
+        
+        .achievement {
+            margin-bottom: 12px;
+            padding-left: 15px;
+            position: relative;
+            color: #374151;
+            line-height: 1.6;
+        }
+        
+        .achievement::before {
+            content: '▶';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-size: 0.8em;
+        }
+        
+        .highlight {
+            background: linear-gradient(120deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 500;
+            color: #1e293b;
+        }
+        
+        .skills-grid {
+            display: grid;
+            gap: 20px;
+        }
+        
+        .skill-category {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .skill-category h4 {
+            color: #2563eb;
+            margin-bottom: 12px;
+            font-weight: 600;
+        }
+        
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        
+        .skill-tag {
+            background: linear-gradient(135deg, #f1f5f9, #e2e8f0);
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            color: #475569;
+            font-weight: 500;
+            border: 1px solid #cbd5e1;
+        }
+        
+        .summary-text {
+            font-size: 1.1em;
+            line-height: 1.7;
+            color: #374151;
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 4px solid #667eea;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .name {
+                font-size: 2.5em;
+            }
+            
+            .contact {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+            
+            .impact-metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+            
+            .resume-container {
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="resume-container">
+        <header class="header">
+            <h1 class="name">Rishanth Gautam Kalicheti</h1>
+            <p class="title">Senior Data Architect & Analytics Strategist</p>
+            <div class="contact">
+                <div class="contact-item">
+                    <span>📧</span>
+                    <span>rishanthkalicheti@gmail.com</span>
+                </div>
+                <div class="contact-item">
+                    <span>📱</span>
+                    <span>+91 8008081952</span>
+                </div>
+                <div class="contact-item">
+                    <span>💼</span>
+                    <span>linkedin.com/in/rishanthgautam</span>
+                </div>
+            </div>
+        </header>
+
+        <div class="main-content">
+            <aside class="sidebar">
+                <section class="section">
+                    <h2 class="section-title">Impact Metrics</h2>
+                    <div class="impact-metrics">
+                        <div class="metric-card">
+                            <div class="metric-number">$180K</div>
+                            <div class="metric-label">Annual Savings</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">50%</div>
+                            <div class="metric-label">Efficiency Gain</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">40%</div>
+                            <div class="metric-label">Trust Improvement</div>
+                        </div>
+                        <div class="metric-card">
+                            <div class="metric-number">6+</div>
+                            <div class="metric-label">Years Experience</div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Core Skills</h2>
+                    <div class="skills-grid">
+                        <div class="skill-category">
+                            <h4>Technical Stack</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">SQL</span>
+                                <span class="skill-tag">Python</span>
+                                <span class="skill-tag">ETL/ELT</span>
+                                <span class="skill-tag">Data Modeling</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Cloud Platforms</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">AWS</span>
+                                <span class="skill-tag">Azure</span>
+                                <span class="skill-tag">GCP</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Tools & Frameworks</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Power BI</span>
+                                <span class="skill-tag">Tableau</span>
+                                <span class="skill-tag">ERwin</span>
+                                <span class="skill-tag">Git</span>
+                            </div>
+                        </div>
+                        <div class="skill-category">
+                            <h4>Specializations</h4>
+                            <div class="skill-tags">
+                                <span class="skill-tag">Data Governance</span>
+                                <span class="skill-tag">MDM</span>
+                                <span class="skill-tag">Lakehouse Architecture</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Education</h2>
+                    <div class="education-item">
+                        <div class="job-title">B.Tech, Computer Science</div>
+                        <div class="company">Jawaharlal Technological University</div>
+                        <div class="duration">8.5 CGPA</div>
+                    </div>
+                    <div class="education-item">
+                        <div class="job-title">Higher Secondary</div>
+                        <div class="company">Johnson Grammar School</div>
+                        <div class="duration">9.3 CGPA</div>
+                    </div>
+                </section>
+            </aside>
+
+            <main class="content">
+                <section class="section">
+                    <h2 class="section-title">Professional Summary</h2>
+                    <div class="summary-text">
+                        Seasoned Data Architect & Analytics Strategist with <strong>6+ years</strong> delivering enterprise-scale data solutions across global organizations. Proven track record of driving <span class="highlight">$180K+ annual cost savings</span> through intelligent automation and architecting unified data ecosystems that bridge 4+ regions and multiple platforms.
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Professional Experience</h2>
+                    
+                    <div class="experience-item">
+                        <h3 class="job-title">Analytical Engineer / Data Architect</h3>
+                        <div class="company">Baxter International Inc</div>
+                        <div class="duration">Aug 2023 – Aug 2025</div>
+                        
+                        <div class="achievement">
+                            <strong>Transformed fragmented procurement landscape:</strong> Architected unified conceptual-logical-physical data model integrating <span class="highlight">AWS, JDE, Coupa, SAP</span> via ELT pipelines, enabling cross-platform supplier engagement metrics
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Delivered measurable business impact:</strong> Improved decision-making efficiency by <span class="highlight">50%</span> and established governance layer across 20+ user groups through scalable analytics models
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Technology leadership:</strong> Leveraged <span class="highlight">SQL, Power BI, AWS, Azure, ERwin</span> to create cross-platform supplier engagement and finance-procurement reconciliation solutions
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Strategic alignment:</strong> Solutions directly support product companies' need for scalable analytics models, semantic modeling, and robust data governance frameworks
+                        </div>
+                    </div>
+
+                    <div class="experience-item">
+                        <h3 class="job-title">Data Architect & Modeling Lead</h3>
+                        <div class="company">First Citizen Bank</div>
+                        <div class="duration">Dec 2019 – Aug 2023</div>
+                        
+                        <div class="achievement">
+                            <strong>Revolutionized banking analytics:</strong> Broke through siloed domain systems to enable unified customer analytics and streamlined regulatory reporting across the enterprise
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Led cross-functional data transformation:</strong> Spearheaded modeling initiatives across <span class="highlight">Customer360, RMS, P2C</span> building canonical data layers for RDBMS & big-data lakehouse
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Automation excellence:</strong> Designed governance framework and automated data validation (MDM) that <span class="highlight">reduced manual effort by 40%</span> and delivered <span class="highlight">$180K annual savings</span>
+                        </div>
+                        
+                        <div class="achievement">
+                            <strong>Technical expertise:</strong> Advanced enterprise standards for governed data platforms, scalable architecture, and cross-functional alignment using <span class="highlight">SQL, Python, Azure Databricks, AWS, ERwin</span>
+                        </div>
+                    </div>
+                </section>
+
+                <section class="section">
+                    <h2 class="section-title">Key Differentiators</h2>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 20px;">
+                        <div class="achievement">
+                            <strong>Enterprise Architecture:</strong> Designing scalable data products following Data Mesh & Data Fabric principles
+                        </div>
+                        <div class="achievement">
+                            <strong>Cross-Domain Integration:</strong> Proven ability in stakeholder alignment and breaking organizational silos
+                        </div>
+                        <div class="achievement">
+                            <strong>Business Impact Focus:</strong> Executive-ready communication with quantifiable ROI and efficiency metrics
+                        </div>
+                        <div class="achievement">
+                            <strong>Modern Data Stack:</strong> Agile delivery and product-led architecture mindset with cloud-native solutions
+                        </div>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+</body>
+</html>
