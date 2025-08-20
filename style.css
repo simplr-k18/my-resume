@@ -1,1 +1,231 @@
 
+/* Base Reset & Body */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #0a0a0a;
+  color: #f5f5f5;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+
+section {
+  padding: 80px 20px;
+  max-width: 900px;
+  margin: auto;
+}
+
+/* Common Section Heading */
+section h2 {
+  font-size: 2rem;
+  margin-bottom: 40px;
+  border-bottom: 2px solid #333;
+  display: inline-block;
+  padding-bottom: 5px;
+}
+
+/* Hero Section */
+.hero {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards;
+}
+
+.hero p {
+  margin-top: 20px;
+  font-size: 1.3rem;
+  color: #aaa;
+  opacity: 0;
+  transform: translateY(30px);
+  animation: fadeUp 1s ease forwards 0.6s; /* start later */;
+}
+
+/* About Section */
+.about p {
+  font-size: 1.1rem;
+  color: #ccc;
+  max-width: 700px;
+}
+
+/* Experience Section */
+.timeline {
+  position: relative;
+  margin-left: 20px;
+  border-left: 2px solid #333;
+}
+
+.timeline-item {
+  margin-bottom: 40px;
+  position: relative;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: fadeUp 1s ease forwards;
+}
+.timeline-item:nth-child(1) { animation-delay: 0.2s; }
+.timeline-item:nth-child(2) { animation-delay: 0.5s; }
+
+.timeline-dot {
+  width: 14px;
+  height: 14px;
+  background: #fff;
+  border-radius: 50%;
+  position: absolute;
+  left: -8px;
+  top: 5px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.timeline-content {
+  margin-left: 30px;
+}
+
+.timeline-content h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.timeline-content .time {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 10px;
+  display: block;
+}
+
+.timeline-content p {
+  font-size: 1.05rem;
+  color: #bbb;
+}
+
+/* Skills Section */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.skill {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  font-size: 1.1rem;
+  color: #ddd;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
+}
+
+.skill:hover {
+  transform: translateY(-5px);
+  background: #1a1a1a;
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+  color: #fff;
+}
+
+/* Projects Section */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.project-card {
+  background: #111;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+}
+
+.project-card h3 {
+  font-size: 1.3rem;
+  margin-bottom: 10px;
+}
+
+.project-card p {
+  font-size: 1.05rem;
+  color: #bbb;
+}
+
+/* Education Section */
+.edu-item h3 {
+  font-size: 1.3rem;
+  margin-bottom: 5px;
+}
+
+.edu-item .time {
+  font-size: 0.9rem;
+  color: #888;
+  margin-bottom: 8px;
+  display: block;
+}
+
+.edu-item p {
+  font-size: 1.05rem;
+  color: #bbb;
+}
+
+/* Contact Section */
+.contact-info p {
+  font-size: 1.1rem;
+  margin: 10px 0;
+}
+
+.contact-info a {
+  color: #00bcd4;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.contact-info a:hover {
+  color: #80deea;
+}
+
+/* Keyframe Animations */
+@keyframes fadeUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Design for Mobile */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  section {
+    padding: 60px 15px;
+  }
+}
+footer {
+  text-align: center;
+  margin-top: 60px;
+  padding: 20px 0;
+  font-size: 0.95rem;
+  color: #888;
+  border-top: 1px solid #333;
+}
