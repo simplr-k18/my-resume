@@ -10,11 +10,14 @@
 </head>
 <body>
 
+  <!-- Hero -->
   <section class="hero">
     <h1>Rishi</h1>
     <p>Data-Driven Product Thinker | Aspiring Product Manager</p>
+    <a href="assets/docs/Rishi_6YoE_Engineer.pdf" class="btn" download>Download Resume</a>
   </section>
 
+  <!-- About -->
   <section class="about" id="about">
     <h2>About Me</h2>
     <p>
@@ -24,6 +27,7 @@
     </p>
   </section>
 
+  <!-- Experience -->
   <section class="experience" id="experience">
     <h2>Experience</h2>
     <div class="timeline">
@@ -54,20 +58,22 @@
     </div>
   </section>
 
+  <!-- Skills -->
   <section class="skills" id="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
-      <div class="skill">Product Management</div>
-      <div class="skill">Data Architecture</div>
-      <div class="skill">Data Modeling (Star, Snowflake, Mesh)</div>
-      <div class="skill">Agile & SAFe</div>
-      <div class="skill">Procurement Analytics</div>
-      <div class="skill">AWS & Azure</div>
-      <div class="skill">ETL & Data Pipelines</div>
-      <div class="skill">Visualization (Tableau, Power BI)</div>
+      <div class="skill" data-tooltip="Roadmapping, prioritization, user research, product strategy">Product Management</div>
+      <div class="skill" data-tooltip="Star schema, snowflake, data mesh design">Data Architecture</div>
+      <div class="skill" data-tooltip="Logical, physical, canonical models, metadata management">Data Modeling</div>
+      <div class="skill" data-tooltip="Scrum, Agile ceremonies, SAFe PI planning">Agile & SAFe</div>
+      <div class="skill" data-tooltip="Direct/indirect procurement, category segmentation, supplier analytics">Procurement Analytics</div>
+      <div class="skill" data-tooltip="AWS (Glue, S3, Redshift), Azure (ADF, Synapse)">AWS & Azure</div>
+      <div class="skill" data-tooltip="ETL workflows, data quality checks, pipelines in Glue/ADF">ETL & Data Pipelines</div>
+      <div class="skill" data-tooltip="Power BI, Tableau, dashboards, storytelling with data">Data Visualization</div>
     </div>
   </section>
 
+  <!-- Projects -->
   <section class="projects" id="projects">
     <h2>Projects</h2>
     <div class="projects-grid">
@@ -86,6 +92,7 @@
     </div>
   </section>
 
+  <!-- Education -->
   <section class="education" id="education">
     <h2>Education</h2>
     <div class="edu-item">
@@ -95,6 +102,7 @@
     </div>
   </section>
 
+  <!-- Contact -->
   <section class="contact" id="contact">
     <h2>Contact</h2>
     <div class="contact-info">
@@ -103,8 +111,50 @@
       <p><strong>GitHub:</strong> <a href="https://github.com/simplr-k18" target="_blank">github.com/simplr-k18</a></p>
     </div>
   </section>
-<footer>
-  <p>© 2025 Rishi. All Rights Reserved.</p>
-</footer>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2025 Rishi. All Rights Reserved.</p>
+  </footer>
+
+  <!-- Tooltip element -->
+  <div id="tooltip" class="tooltip"></div>
+
+  <!-- Tooltip Script -->
+  <script>
+    const tooltip = document.getElementById("tooltip");
+    const skills = document.querySelectorAll(".skill");
+
+    skills.forEach(skill => {
+      // Show tooltip on hover
+      skill.addEventListener("mouseenter", () => {
+        tooltip.textContent = skill.getAttribute("data-tooltip");
+        tooltip.style.display = "block";
+        const rect = skill.getBoundingClientRect();
+        tooltip.style.left = rect.left + window.scrollX + "px";
+        tooltip.style.top = rect.bottom + window.scrollY + "px";
+      });
+
+      // Hide tooltip on leave
+      skill.addEventListener("mouseleave", () => {
+        tooltip.style.display = "none";
+      });
+
+      // Show tooltip on click (for mobile)
+      skill.addEventListener("click", (e) => {
+        e.stopPropagation();
+        tooltip.textContent = skill.getAttribute("data-tooltip");
+        tooltip.style.display = "block";
+        const rect = skill.getBoundingClientRect();
+        tooltip.style.left = rect.left + window.scrollX + "px";
+        tooltip.style.top = rect.bottom + window.scrollY + "px";
+      });
+    });
+
+    // Hide tooltip if clicking anywhere else
+    document.addEventListener("click", () => {
+      tooltip.style.display = "none";
+    });
+  </script>
 </body>
 </html>
