@@ -1,4 +1,3 @@
-
 /* Base Reset & Body */
 * {
   margin: 0;
@@ -112,7 +111,7 @@ section h2 {
   color: #bbb;
 }
 
-/* Skills Section */
+/* Skills Section (Flip Cards) */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -120,21 +119,51 @@ section h2 {
 }
 
 .skill {
-  background: #111;
-  padding: 20px;
-  border-radius: 12px;
+  perspective: 1000px;
+  cursor: pointer;
+}
+
+.skill-inner {
+  position: relative;
+  width: 100%;
+  height: 140px;
   text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.skill:hover .skill-inner,
+.skill.flipped .skill-inner {
+  transform: rotateY(180deg);
+}
+
+.skill-front, .skill-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 1.1rem;
   color: #ddd;
-  transition: all 0.3s ease;
+  background: #111;
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.05);
 }
 
-.skill:hover {
-  transform: translateY(-5px);
+.skill-front {
+  font-weight: 600;
+}
+
+.skill-back {
+  transform: rotateY(180deg);
   background: #1a1a1a;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
   color: #fff;
+  font-size: 1rem;
+  flex-direction: column;
+  gap: 5px;
 }
 
 /* Projects Section */
@@ -221,6 +250,7 @@ section h2 {
     padding: 60px 15px;
   }
 }
+
 footer {
   text-align: center;
   margin-top: 60px;
@@ -229,18 +259,3 @@ footer {
   color: #888;
   border-top: 1px solid #333;
 }
-
-/* Tooltip Styling */
-.tooltip {
-  position: absolute;
-  background: #222;
-  color: #fff;
-  padding: 8px 12px;
-  border-radius: 8px;
-  font-size: 0.9rem;
-  white-space: nowrap;
-  box-shadow: 0 0 10px rgba(0,0,0,0.5);
-  display: none;
-  z-index: 1000;
-}
-
