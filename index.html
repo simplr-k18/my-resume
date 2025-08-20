@@ -62,14 +62,63 @@
   <section class="skills" id="skills">
     <h2>Skills</h2>
     <div class="skills-grid">
-      <div class="skill" data-tooltip="Roadmapping, prioritization, user research, product strategy">Product Management</div>
-      <div class="skill" data-tooltip="Star schema, snowflake, data mesh design">Data Architecture</div>
-      <div class="skill" data-tooltip="Logical, physical, canonical models, metadata management">Data Modeling</div>
-      <div class="skill" data-tooltip="Scrum, Agile ceremonies, SAFe PI planning">Agile & SAFe</div>
-      <div class="skill" data-tooltip="Direct/indirect procurement, category segmentation, supplier analytics">Procurement Analytics</div>
-      <div class="skill" data-tooltip="AWS (Glue, S3, Redshift), Azure (ADF, Synapse)">AWS & Azure</div>
-      <div class="skill" data-tooltip="ETL workflows, data quality checks, pipelines in Glue/ADF">ETL & Data Pipelines</div>
-      <div class="skill" data-tooltip="Power BI, Tableau, dashboards, storytelling with data">Data Visualization</div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">Product Management</div>
+          <div class="card-back">Roadmapping, Prioritization, User Research, Product Strategy</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">Data Architecture</div>
+          <div class="card-back">Star Schema, Snowflake, Data Mesh, Governance</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">Data Modeling</div>
+          <div class="card-back">Logical, Physical, Canonical Models, Metadata Management</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">Agile & SAFe</div>
+          <div class="card-back">Scrum, Agile Ceremonies, SAFe PI Planning</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">Procurement Analytics</div>
+          <div class="card-back">Direct/Indirect Procurement, Category Segmentation, Supplier Analytics</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">AWS & Azure</div>
+          <div class="card-back">AWS (Glue, S3, Redshift), Azure (ADF, Synapse)</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">ETL & Data Pipelines</div>
+          <div class="card-back">ETL Workflows, Data Quality Checks, Glue, ADF Pipelines</div>
+        </div>
+      </div>
+
+      <div class="skill-card">
+        <div class="card-inner">
+          <div class="card-front">Data Visualization</div>
+          <div class="card-back">Power BI, Tableau, Looker, Storytelling with Data</div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -117,44 +166,7 @@
     <p>© 2025 Rishi. All Rights Reserved.</p>
   </footer>
 
-  <!-- Tooltip element -->
-  <div id="tooltip" class="tooltip"></div>
-
-  <!-- Tooltip Script -->
-  <script>
-    const tooltip = document.getElementById("tooltip");
-    const skills = document.querySelectorAll(".skill");
-
-    skills.forEach(skill => {
-      // Show tooltip on hover
-      skill.addEventListener("mouseenter", () => {
-        tooltip.textContent = skill.getAttribute("data-tooltip");
-        tooltip.style.display = "block";
-        const rect = skill.getBoundingClientRect();
-        tooltip.style.left = rect.left + window.scrollX + "px";
-        tooltip.style.top = rect.bottom + window.scrollY + "px";
-      });
-
-      // Hide tooltip on leave
-      skill.addEventListener("mouseleave", () => {
-        tooltip.style.display = "none";
-      });
-
-      // Show tooltip on click (for mobile)
-      skill.addEventListener("click", (e) => {
-        e.stopPropagation();
-        tooltip.textContent = skill.getAttribute("data-tooltip");
-        tooltip.style.display = "block";
-        const rect = skill.getBoundingClientRect();
-        tooltip.style.left = rect.left + window.scrollX + "px";
-        tooltip.style.top = rect.bottom + window.scrollY + "px";
-      });
-    });
-
-    // Hide tooltip if clicking anywhere else
-    document.addEventListener("click", () => {
-      tooltip.style.display = "none";
-    });
-  </script>
+  <!-- Script -->
+  <script src="script.js"></script>
 </body>
 </html>
