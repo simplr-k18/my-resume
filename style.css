@@ -229,3 +229,18 @@ footer {
   color: #888;
   border-top: 1px solid #333;
 }
+
+/* Tooltip Styling */
+.tooltip {
+  position: absolute;
+  background: #222;
+  color: #fff;
+  padding: 8px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  display: none;
+  z-index: 1000;
+}
+
