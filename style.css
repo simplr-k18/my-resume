@@ -259,3 +259,21 @@ footer {
   color: #888;
   border-top: 1px solid #333;
 }
+
+/* Add this to your existing mobile media query */
+@media (max-width: 600px) {
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+  .hero p {
+    font-size: 1.1rem;
+  }
+  section {
+    padding: 60px 15px;
+  }
+  
+  /* ADD THESE LINES */
+  .skill:hover .skill-inner {
+    transform: none;
+  }
+}
