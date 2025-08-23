@@ -3,195 +3,681 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Rishi – Data-driven product thinker and aspiring Product Manager with 6+ years experience in data architecture, analytics, and product development.">
-  <title>Rishi – Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <meta name="description" content="Rishi — Data-driven product thinker and aspiring Product Manager with 6+ years experience in data architecture, analytics, and product development.">
+  <title>Rishi — Portfolio</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
+  <!-- Animated Background -->
+  <div class="bg-animation">
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+  </div>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1 class="fade-in">Rishi</h1>
-      <p class="fade-in delay">Data-Driven Product Thinker <span>|</span> Aspiring Product Manager</p>
-      <a href="assets/docs/Rishi_6YoE_Engineer.pdf" class="btn fade-in delay-2" download>Download Resume</a>
+  <!-- Navigation -->
+  <nav class="nav-bar">
+    <div class="nav-container">
+      <div class="nav-logo">
+        <span class="logo-text">Rishi</span>
+        <div class="logo-dot"></div>
+      </div>
+      
+      <ul class="nav-menu">
+        <li><a href="#home" class="nav-link active">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#experience" class="nav-link">Experience</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      
+      <div class="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero" id="home">
+    <div class="hero-container">
+      <div class="hero-content">
+        <div class="hero-greeting">
+          <span class="greeting-text">Hello, I'm</span>
+        </div>
+        
+        <h1 class="hero-name">
+          <span class="name-part">R</span>
+          <span class="name-part">i</span>
+          <span class="name-part">s</span>
+          <span class="name-part">h</span>
+          <span class="name-part">i</span>
+        </h1>
+        
+        <div class="hero-title">
+          <h2 class="typing-text">
+            <span class="text-line">Data-Driven Product Thinker</span>
+            <span class="text-line">Aspiring Product Manager</span>
+            <span class="text-line">Analytics Architect</span>
+          </h2>
+        </div>
+        
+        <div class="hero-description">
+          <p>Transforming data into meaningful products that drive business value and enhance user experiences through strategic thinking and analytical precision.</p>
+        </div>
+        
+        <div class="hero-actions">
+          <a href="#about" class="btn btn-primary">
+            <span>Discover My Journey</span>
+            <div class="btn-ripple"></div>
+          </a>
+          <a href="assets/docs/Rishi_6YoE_Engineer.pdf" class="btn btn-secondary" download>
+            <span>Download Resume</span>
+            <div class="btn-ripple"></div>
+          </a>
+        </div>
+      </div>
+      
+      <div class="hero-visual">
+        <div class="profile-container">
+          <div class="profile-glow"></div>
+          <div class="profile-rings">
+            <div class="ring ring-1"></div>
+            <div class="ring ring-2"></div>
+            <div class="ring ring-3"></div>
+          </div>
+          <div class="profile-avatar">
+            <div class="avatar-placeholder">
+              <span>R</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <div class="scroll-indicator">
+      <div class="scroll-mouse">
+        <div class="scroll-wheel"></div>
+      </div>
+      <span class="scroll-text">Scroll to explore</span>
     </div>
   </section>
 
-  <!-- About -->
-  <section class="about" id="about">
-    <h2>About Me</h2>
-    <p>
-      Over the past 6 years, I’ve worked deeply with data — building products, shaping architectures, and driving decisions. 
-      Now, I’m channeling that same analytical rigor and user-first mindset into product management. 
-      I believe great products live at the intersection of <em>data, design, and empathy</em>.
-    </p>
-  </section>
-
-  <!-- Experience -->
-  <section class="experience" id="experience">
-    <h2>Experience</h2>
-    <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Baxter – Analytical Engineer</h3>
-          <span class="time">2023 – Present</span>
-          <p>
-            Designed <strong>Procurement360</strong> data products during Hillrom acquisition 
-            and Kidney Care separation, ensuring governance, security, and quality across procurement domains.
-          </p>
-        </div>
+  <!-- About Section -->
+  <section class="about section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">01</span>
+        <h2 class="section-title">About Me</h2>
+        <div class="section-line"></div>
       </div>
-      <div class="timeline-item">
-        <div class="timeline-dot"></div>
-        <div class="timeline-content">
-          <h3>Silicon Valley Bank (via TCS) – Data Architect</h3>
-          <span class="time">2019 – 2023</span>
-          <p>
-            Supported <strong>Boston Private acquisition</strong> and SVB → First Citizens transition. 
-            Built and optimized data products (loans, deposits, credit, investments, Customer360) across enterprise platforms.
-          </p>
+      
+      <div class="about-content">
+        <div class="about-text">
+          <div class="text-reveal">
+            <p class="lead-text">
+              I've spent the past 6 years working deeply with data — from building products and shaping architectures to driving strategic decisions that matter.
+            </p>
+          </div>
+          
+          <div class="text-reveal">
+            <p>
+              Now, I'm bringing that same analytical rigor and user-first mindset into product management. I believe great products live at the intersection of data, design, and empathy — where numbers tell stories and stories drive innovation.
+            </p>
+          </div>
+          
+          <div class="text-reveal">
+            <p>
+              My journey has taken me through complex data landscapes, from procurement analytics during major acquisitions to banking data products during organizational transitions. Each challenge has strengthened my conviction that the best products are built on deep understanding — of users, of data, and of the business value that bridges them.
+            </p>
+          </div>
+          
+          <div class="about-stats">
+            <div class="stat-item">
+              <span class="stat-number" data-target="6">0</span>
+              <span class="stat-label">Years Experience</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="15">0</span>
+              <span class="stat-label">Data Products Built</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-number" data-target="3">0</span>
+              <span class="stat-label">Major Acquisitions</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="about-visual">
+          <div class="visual-card">
+            <div class="card-content">
+              <h3>My Philosophy</h3>
+              <blockquote>
+                "Great products are born when data meets empathy, and strategy meets execution."
+              </blockquote>
+            </div>
+            <div class="card-glow"></div>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- Skills -->
-  <section class="skills" id="skills">
-    <h2>Skills</h2>
-    <div class="skills-grid">
-
-      <div class="skill-card">
-        <div class="skill-inner">
-          <div class="skill-front">Product Management</div>
-          <div class="skill-back">
-            <div>Roadmapping</div>
-            <div>Prioritization</div>
-            <div>User Research</div>
-            <div>Product Strategy</div>
+  <!-- Experience Section -->
+  <section class="experience section" id="experience">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">02</span>
+        <h2 class="section-title">Experience</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="timeline-container">
+        <div class="timeline-line"></div>
+        
+        <div class="timeline-item" data-year="2023">
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+          </div>
+          
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="role-title">Analytical Engineer</h3>
+              <span class="company">Baxter</span>
+              <span class="duration">2023 — Present</span>
+            </div>
+            
+            <div class="timeline-description">
+              <p>
+                Led design of Procurement360 data products during Hillrom acquisition and Kidney Care separation. Focused on procurement data (direct, indirect, category segmentation) with emphasis on data quality, governance, and security.
+              </p>
+            </div>
+            
+            <div class="timeline-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">📊</span>
+                <span>Procurement360 Platform</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🔧</span>
+                <span>Data Architecture</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🛡️</span>
+                <span>Data Governance</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-inner">
-          <div class="skill-front">Data Architecture</div>
-          <div class="skill-back">
-            <div>Star Schema</div>
-            <div>Snowflake</div>
-            <div>Data Mesh</div>
-            <div>Governance</div>
+        
+        <div class="timeline-item" data-year="2019">
+          <div class="timeline-dot">
+            <div class="dot-inner"></div>
+          </div>
+          
+          <div class="timeline-content">
+            <div class="timeline-header">
+              <h3 class="role-title">Data Architect</h3>
+              <span class="company">Silicon Valley Bank (via TCS)</span>
+              <span class="duration">2019 — 2023</span>
+            </div>
+            
+            <div class="timeline-description">
+              <p>
+                Supported Boston Private acquisition and SVB → First Citizens transition. Built and optimized banking data products (loans, deposits, investments, credit, Customer360) across enterprise data platforms.
+              </p>
+            </div>
+            
+            <div class="timeline-highlights">
+              <div class="highlight-item">
+                <span class="highlight-icon">🏦</span>
+                <span>Banking Data Products</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">🔄</span>
+                <span>System Migrations</span>
+              </div>
+              <div class="highlight-item">
+                <span class="highlight-icon">👥</span>
+                <span>Customer360 Platform</span>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-inner">
-          <div class="skill-front">Data Modeling</div>
-          <div class="skill-back">
-            <div>Canonical Models</div>
-            <div>Logical & Physical</div>
-            <div>Metadata Management</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-inner">
-          <div class="skill-front">Agile & SAFe</div>
-          <div class="skill-back">
-            <div>Scrum</div>
-            <div>Agile Ceremonies</div>
-            <div>SAFe PI Planning</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-inner">
-          <div class="skill-front">Cloud</div>
-          <div class="skill-back">
-            <div>Azure</div>
-            <div>AWS</div>
-            <div>OCI</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-inner">
-          <div class="skill-front">ETL & Pipelines</div>
-          <div class="skill-back">
-            <div>ETL Workflows</div>
-            <div>Data Quality</div>
-            <div>Glue</div>
-            <div>ADF Pipelines</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="skill-card">
-        <div class="skill-inner">
-          <div class="skill-front">Visualization</div>
-          <div class="skill-back">
-            <div>Power BI</div>
-            <div>Tableau</div>
-            <div>Looker</div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- Projects -->
-  <section class="projects" id="projects">
-    <h2>Projects</h2>
-    <div class="projects-grid">
-      <div class="project-card">
-        <h3>Procurement360</h3>
-        <p>A calm and structured analytics platform built during Baxter’s Hillrom acquisition — enabling segmentation, supplier insights, and governance.</p>
-      </div>
-      <div class="project-card">
-        <h3>Customer360</h3>
-        <p>A unified banking data product at SVB, integrating deposits, loans, credit, and investments into one seamless view.</p>
-      </div>
-      <div class="project-card">
-        <h3>Data Mesh Framework</h3>
-        <p>Domain-oriented mesh architecture across AWS & Azure, modernizing procurement and financial analytics pipelines.</p>
       </div>
     </div>
   </section>
 
-  <!-- Education -->
-  <section class="education" id="education">
-    <h2>Education</h2>
-    <div class="edu-item">
-      <h3>Bachelor of Engineering – Computer Science and Electronics</h3>
-      <span class="time">2015 – 2019</span>
-      <p>Jawaharlal Nehru Technological University, India</p>
+  <!-- Skills Section -->
+  <section class="skills section" id="skills">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">03</span>
+        <h2 class="section-title">Skills & Expertise</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="skills-container">
+        <div class="skill-categories">
+          <div class="category-tab active" data-category="product">Product Management</div>
+          <div class="category-tab" data-category="data">Data & Analytics</div>
+          <div class="category-tab" data-category="technical">Technical Skills</div>
+          <div class="category-tab" data-category="soft">Leadership</div>
+        </div>
+        
+        <div class="skills-content">
+          <!-- Product Management Skills -->
+          <div class="skill-group active" data-category="product">
+            <div class="skill-card floating-card">
+              <div class="card-icon">🎯</div>
+              <h3>Strategy & Vision</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Product Roadmapping</span>
+                <span class="skill-tag">Market Analysis</span>
+                <span class="skill-tag">Competitive Intelligence</span>
+                <span class="skill-tag">OKR Framework</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">👥</div>
+              <h3>User-Centric Design</h3>
+              <div class="skill-details">
+                <span class="skill-tag">User Research</span>
+                <span class="skill-tag">Personas & Journey Maps</span>
+                <span class="skill-tag">A/B Testing</span>
+                <span class="skill-tag">UX Collaboration</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">⚡</div>
+              <h3>Agile Execution</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Scrum Master</span>
+                <span class="skill-tag">Sprint Planning</span>
+                <span class="skill-tag">Stakeholder Management</span>
+                <span class="skill-tag">Cross-functional Leadership</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Data & Analytics Skills -->
+          <div class="skill-group" data-category="data">
+            <div class="skill-card floating-card">
+              <div class="card-icon">🏗️</div>
+              <h3>Data Architecture</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Star Schema Design</span>
+                <span class="skill-tag">Data Mesh</span>
+                <span class="skill-tag">Snowflake</span>
+                <span class="skill-tag">Data Governance</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">🔄</div>
+              <h3>Data Engineering</h3>
+              <div class="skill-details">
+                <span class="skill-tag">ETL Pipelines</span>
+                <span class="skill-tag">Azure Data Factory</span>
+                <span class="skill-tag">AWS Glue</span>
+                <span class="skill-tag">Data Quality</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">📊</div>
+              <h3>Analytics & BI</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Power BI</span>
+                <span class="skill-tag">Tableau</span>
+                <span class="skill-tag">Looker</span>
+                <span class="skill-tag">Advanced SQL</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Technical Skills -->
+          <div class="skill-group" data-category="technical">
+            <div class="skill-card floating-card">
+              <div class="card-icon">☁️</div>
+              <h3>Cloud Platforms</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Microsoft Azure</span>
+                <span class="skill-tag">Amazon Web Services</span>
+                <span class="skill-tag">Oracle Cloud</span>
+                <span class="skill-tag">Multi-Cloud Strategy</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">🛠️</div>
+              <h3>Development Tools</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Git & Version Control</span>
+                <span class="skill-tag">CI/CD Pipelines</span>
+                <span class="skill-tag">Docker</span>
+                <span class="skill-tag">API Design</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">📈</div>
+              <h3>Analytics Tools</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Python</span>
+                <span class="skill-tag">R</span>
+                <span class="skill-tag">Machine Learning</span>
+                <span class="skill-tag">Statistical Analysis</span>
+              </div>
+            </div>
+          </div>
+          
+          <!-- Soft Skills -->
+          <div class="skill-group" data-category="soft">
+            <div class="skill-card floating-card">
+              <div class="card-icon">🎤</div>
+              <h3>Communication</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Executive Presentations</span>
+                <span class="skill-tag">Technical Writing</span>
+                <span class="skill-tag">Data Storytelling</span>
+                <span class="skill-tag">Cross-Cultural Teams</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">🌟</div>
+              <h3>Leadership</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Team Building</span>
+                <span class="skill-tag">Mentoring</span>
+                <span class="skill-tag">Change Management</span>
+                <span class="skill-tag">Strategic Thinking</span>
+              </div>
+            </div>
+            
+            <div class="skill-card floating-card">
+              <div class="card-icon">🤝</div>
+              <h3>Collaboration</h3>
+              <div class="skill-details">
+                <span class="skill-tag">Stakeholder Alignment</span>
+                <span class="skill-tag">Conflict Resolution</span>
+                <span class="skill-tag">Vendor Management</span>
+                <span class="skill-tag">Global Teams</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
-  <!-- Contact -->
-  <section class="contact" id="contact">
-    <h2>Contact</h2>
-    <div class="contact-info">
-      <p><strong>Email:</strong> <a href="mailto:rishanthkalicheti@gmail.com">rishanthkalicheti@gmail.com</a></p>
-      <p><strong>LinkedIn:</strong> <a href="https://linkedin.com/in/rishanth-gautam" target="_blank">linkedin.com/in/rishanth-gautam</a></p>
-      <p><strong>GitHub:</strong> <a href="https://github.com/simplr-k18" target="_blank">github.com/simplr-k18</a></p>
+  <!-- Projects Section -->
+  <section class="projects section" id="projects">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">04</span>
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="projects-grid">
+        <div class="project-card">
+          <div class="project-visual">
+            <div class="project-icon">🛒</div>
+            <div class="project-glow"></div>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Procurement360</h3>
+            <p class="project-description">
+              End-to-end procurement analytics platform built during Baxter's Hillrom acquisition, enabling category segmentation and supplier insights across global operations.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">Azure Data Factory</span>
+              <span class="tech-tag">Power BI</span>
+              <span class="tech-tag">Data Governance</span>
+            </div>
+            
+            <div class="project-impact">
+              <div class="impact-item">
+                <span class="impact-number">$2M+</span>
+                <span class="impact-label">Cost Savings</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-number">15</span>
+                <span class="impact-label">Business Units</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-hover">
+            <div class="hover-content">
+              <h4>Key Achievements</h4>
+              <ul>
+                <li>Unified procurement data across 15+ business units</li>
+                <li>Implemented real-time supplier performance tracking</li>
+                <li>Enabled strategic sourcing decisions during acquisition</li>
+                <li>Built self-service analytics for procurement teams</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-visual">
+            <div class="project-icon">🏦</div>
+            <div class="project-glow"></div>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Customer360</h3>
+            <p class="project-description">
+              Banking data product developed for SVB's Boston Private acquisition, unifying deposits, loans, credit, and investment data into a comprehensive customer view.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">Snowflake</span>
+              <span class="tech-tag">AWS Glue</span>
+              <span class="tech-tag">Tableau</span>
+            </div>
+            
+            <div class="project-impact">
+              <div class="impact-item">
+                <span class="impact-number">500K+</span>
+                <span class="impact-label">Customer Records</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-number">95%</span>
+                <span class="impact-label">Data Accuracy</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-hover">
+            <div class="hover-content">
+              <h4>Key Achievements</h4>
+              <ul>
+                <li>Merged customer data from 3 legacy systems</li>
+                <li>Created unified customer risk profiles</li>
+                <li>Enabled personalized product recommendations</li>
+                <li>Supported seamless acquisition integration</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        
+        <div class="project-card">
+          <div class="project-visual">
+            <div class="project-icon">🕸️</div>
+            <div class="project-glow"></div>
+          </div>
+          
+          <div class="project-content">
+            <h3 class="project-title">Data Mesh Framework</h3>
+            <p class="project-description">
+              Designed domain-oriented data mesh architecture to modernize procurement and financial analytics pipelines across AWS and Azure environments.
+            </p>
+            
+            <div class="project-tech">
+              <span class="tech-tag">Data Mesh</span>
+              <span class="tech-tag">Microservices</span>
+              <span class="tech-tag">Multi-Cloud</span>
+            </div>
+            
+            <div class="project-impact">
+              <div class="impact-item">
+                <span class="impact-number">40%</span>
+                <span class="impact-label">Faster Delivery</span>
+              </div>
+              <div class="impact-item">
+                <span class="impact-number">8</span>
+                <span class="impact-label">Data Domains</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="project-hover">
+            <div class="hover-content">
+              <h4>Key Achievements</h4>
+              <ul>
+                <li>Architected decentralized data ownership model</li>
+                <li>Implemented domain-driven data products</li>
+                <li>Reduced time-to-market for analytics by 40%</li>
+                <li>Enabled self-serve data infrastructure</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education Section -->
+  <section class="education section" id="education">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">05</span>
+        <h2 class="section-title">Education</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="education-content">
+        <div class="education-card">
+          <div class="education-visual">
+            <div class="institution-logo">🎓</div>
+            <div class="education-glow"></div>
+          </div>
+          
+          <div class="education-details">
+            <h3 class="degree-title">Bachelor of Engineering</h3>
+            <p class="degree-field">Computer Science and Electronics</p>
+            <div class="institution-info">
+              <span class="institution-name">Jawaharlal Nehru Technological University</span>
+              <span class="graduation-year">2015 — 2019</span>
+            </div>
+            <p class="location">Hyderabad, India</p>
+          </div>
+          
+          <div class="education-highlights">
+            <div class="highlight">
+              <span class="highlight-title">Focus Areas</span>
+              <p>Data Structures, Algorithms, Database Systems, Software Engineering</p>
+            </div>
+            <div class="highlight">
+              <span class="highlight-title">Key Projects</span>
+              <p>Machine Learning Models, Web Applications, Data Analytics</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section class="contact section" id="contact">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-number">06</span>
+        <h2 class="section-title">Let's Connect</h2>
+        <div class="section-line"></div>
+      </div>
+      
+      <div class="contact-content">
+        <div class="contact-text">
+          <div class="contact-intro">
+            <h3>Ready to build something amazing together?</h3>
+            <p>
+              I'm always excited to discuss new opportunities, innovative projects, 
+              or simply connect with fellow data and product enthusiasts. 
+              Let's explore how we can create meaningful impact through thoughtful product development.
+            </p>
+          </div>
+        </div>
+        
+        <div class="contact-methods">
+          <a href="mailto:rishanthkalicheti@gmail.com" class="contact-card">
+            <div class="contact-icon">📧</div>
+            <div class="contact-info">
+              <h4>Email</h4>
+              <p>rishanthkalicheti@gmail.com</p>
+            </div>
+            <div class="contact-arrow">→</div>
+          </a>
+          
+          <a href="https://linkedin.com/in/rishanth-gautam" target="_blank" class="contact-card">
+            <div class="contact-icon">💼</div>
+            <div class="contact-info">
+              <h4>LinkedIn</h4>
+              <p>Connect professionally</p>
+            </div>
+            <div class="contact-arrow">→</div>
+          </a>
+          
+          <a href="https://github.com/simplr-k18" target="_blank" class="contact-card">
+            <div class="contact-icon">💻</div>
+            <div class="contact-info">
+              <h4>GitHub</h4>
+              <p>Explore my code</p>
+            </div>
+            <div class="contact-arrow">→</div>
+          </a>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
-  <footer>
-    <p>© 2025 Rishi. All Rights Reserved.</p>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-text">
+        <p>&copy; 2025 Rishi. Crafted with passion and precision.</p>
+      </div>
+      <div class="footer-social">
+        <a href="https://linkedin.com/in/rishanth-gautam" target="_blank">LinkedIn</a>
+        <a href="https://github.com/simplr-k18" target="_blank">GitHub</a>
+        <a href="mailto:rishanthkalicheti@gmail.com">Email</a>
+      </div>
+    </div>
   </footer>
 
-  <!-- Script -->
+  <!-- Scripts -->
   <script src="script.js"></script>
 </body>
 </html>
