@@ -454,7 +454,8 @@ body {
 .btn-secondary {
   background: transparent;
   color: var(--text-primary);
-  border: 2px solid var(--glass-border);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
 }
 
 .btn:hover {
@@ -525,7 +526,8 @@ body {
 
 .ring {
   position: absolute;
-  border: 1px solid var(--glass-border);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -565,7 +567,8 @@ body {
   border-radius: 50%;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 2px solid var(--glass-border);
+ border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -701,7 +704,8 @@ body {
   position: relative;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 20px;
   padding: var(--space-lg);
   text-align: center;
@@ -822,7 +826,8 @@ body {
   margin-left: 80px;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+ border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 15px;
   padding: var(--space-lg);
   transition: var(--transition-gentle);
@@ -902,7 +907,8 @@ body {
 .category-tab {
   padding: var(--space-sm) var(--space-md);
   background: var(--glass-bg);
-  border: 1px solid var(--glass-border);
+ border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 25px;
   cursor: pointer;
   transition: var(--transition-gentle);
@@ -935,7 +941,8 @@ body {
 .skill-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 20px;
   padding: var(--space-lg);
   text-align: center;
@@ -1005,7 +1012,8 @@ body {
 .project-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 20px;
   padding: var(--space-lg);
   transition: var(--transition-gentle);
@@ -1156,7 +1164,8 @@ body {
 .education-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+ border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 20px;
   padding: var(--space-xl);
   display: grid;
@@ -1298,7 +1307,8 @@ body {
   padding: var(--space-lg);
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 1px solid var(--glass-border);
+  border: 0.5px solid rgba(255, 255, 255, 0.08);
+box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 15px;
   text-decoration: none;
   color: inherit;
@@ -1666,30 +1676,35 @@ body {
     color: black;
   }
 }
-/* Add this new CSS at the end of your style.css */
-.project-card,
-.skill-card,
-.education-card,
-.contact-card,
-.visual-card {
-  border: 1px solid transparent; /* Make the original border transparent */
-  background-clip: padding-box; /* Important: keeps the background from spilling into the border area */
-  position: relative;
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .hero-container,
+  .about-content,
+  .contact-content {
+    grid-template-columns: 1fr !important;
+    text-align: center;
+  }
+
+  .skills-container {
+    padding: 0 var(--space-sm);
+  }
 }
 
-.project-card::before,
-.skill-card::before,
-.education-card::before,
-.contact-card::before,
-.visual-card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: -1;
-  margin: -1px; /* The magic: expand the pseudo-element outside the card by 1px */
-  border-radius: inherit; /* Match the parent's border-radius */
-  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+@media (max-width: 600px) {
+  .nav-menu {
+    display: none;
+  }
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    cursor: pointer;
+  }
+  .hero-name {
+    font-size: 2.5rem;
+  }
+  .section-title {
+    font-size: 2rem;
+  }
 }
