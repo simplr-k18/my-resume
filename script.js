@@ -101,28 +101,29 @@ class ElegantPortfolio {
   }
 
   // Smooth scroll observer for section animations
-  initScrollObserver() {
+  // Replace with this simplified method
+initScrollObserver() {
     const observerOptions = {
-      threshold: 0.1,
-      rootMargin: '-50px 0px -50px 0px'
+      threshold: 0.1, // Trigger when 10% of the element is visible
     };
 
-    const observer = new IntersectionObserver((entries) => {
+    const observer = new IntersectionObserver((entries, observer) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          entry.target.classList.add('animate-in');
+          // Add our new class to trigger the CSS transition
+          entry.target.classList.add('is-visible');
           
-          // Trigger specific animations for different sections
-          this.triggerSectionAnimation(entry.target);
+          // Stop observing the element so the animation doesn't re-trigger
+          observer.unobserve(entry.target);
         }
       });
     }, observerOptions);
 
-    // Observe all sections and special elements
-    document.querySelectorAll('.section, .timeline-item, .skill-card, .project-card').forEach(el => {
+    // Observe all sections
+    document.querySelectorAll('.section').forEach(el => {
       observer.observe(el);
     });
-  }
+}
 
   triggerSectionAnimation(section) {
     const sectionId = section.getAttribute('id');
