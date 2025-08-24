@@ -259,13 +259,8 @@ body {
   z-index: 1;
   padding: var(--space-xl) 0;
   opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-
-.section.is-visible {
-  opacity: 1;
-  transform: translateY(0);
+  transform: translateY(50px);
+  animation: fadeInUp 1s ease forwards;
 }
 
 .section:nth-child(even) {
@@ -454,8 +449,7 @@ body {
 .btn-secondary {
   background: transparent;
   color: var(--text-primary);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 2px solid var(--glass-border);
 }
 
 .btn:hover {
@@ -526,8 +520,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
 
 .ring {
   position: absolute;
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 50%;
   top: 50%;
   left: 50%;
@@ -567,8 +560,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   border-radius: 50%;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
- border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 2px solid var(--glass-border);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -704,8 +696,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   position: relative;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: var(--space-lg);
   text-align: center;
@@ -826,8 +817,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   margin-left: 80px;
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
- border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 15px;
   padding: var(--space-lg);
   transition: var(--transition-gentle);
@@ -907,8 +897,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
 .category-tab {
   padding: var(--space-sm) var(--space-md);
   background: var(--glass-bg);
- border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 25px;
   cursor: pointer;
   transition: var(--transition-gentle);
@@ -941,8 +930,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
 .skill-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: var(--space-lg);
   text-align: center;
@@ -1012,8 +1000,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
 .project-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: var(--space-lg);
   transition: var(--transition-gentle);
@@ -1164,8 +1151,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
 .education-card {
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
- border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 20px;
   padding: var(--space-xl);
   display: grid;
@@ -1307,8 +1293,7 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   padding: var(--space-lg);
   background: var(--glass-bg);
   backdrop-filter: blur(20px);
-  border: 0.5px solid rgba(255, 255, 255, 0.08);
-box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
+  border: 1px solid var(--glass-border);
   border-radius: 15px;
   text-decoration: none;
   color: inherit;
@@ -1455,33 +1440,27 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
     --space-lg: 3rem;
   }
   
-  /* Replace with these new rules */
-.nav-menu {
-  position: fixed;
-  /* Start it right below the navbar, not at the bottom of the screen */
-  top: 65px; /* Adjust this value to match your navbar's height */
-  left: 0;
-  right: 0;
-  background: rgba(10, 10, 15, 0.95);
-  backdrop-filter: blur(20px);
-  flex-direction: column;
-  padding: var(--space-md);
-  gap: var(--space-sm);
+  .nav-menu {
+    position: fixed;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 10, 15, 0.95);
+    backdrop-filter: blur(20px);
+    flex-direction: column;
+    padding: var(--space-md);
+    gap: var(--space-sm);
+    transform: translateY(-100%);
+    opacity: 0;
+    visibility: hidden;
+    transition: var(--transition-gentle);
+  }
   
-  /* Hide it by moving it up, out of sight */
-  transform: translateY(-120%);
-  opacity: 0;
-  visibility: hidden;
-  transition: var(--transition-gentle);
-  border-bottom: 1px solid var(--glass-border);
-}
-
-.nav-menu.active {
-  /* Bring it down into view */
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
+  .nav-menu.active {
+    transform: translateY(0);
+    opacity: 1;
+    visibility: visible;
+  }
   
   .nav-toggle {
     display: flex;
@@ -1674,37 +1653,5 @@ box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25); /* subtle depth */
   body {
     background: white;
     color: black;
-  }
-}
-
-/* Responsive adjustments */
-@media (max-width: 992px) {
-  .hero-container,
-  .about-content,
-  .contact-content {
-    grid-template-columns: 1fr !important;
-    text-align: center;
-  }
-
-  .skills-container {
-    padding: 0 var(--space-sm);
-  }
-}
-
-@media (max-width: 600px) {
-  .nav-menu {
-    display: none;
-  }
-  .nav-toggle {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    cursor: pointer;
-  }
-  .hero-name {
-    font-size: 2.5rem;
-  }
-  .section-title {
-    font-size: 2rem;
   }
 }
