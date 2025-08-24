@@ -1,9 +1,4 @@
-/* ====================================
-   ELEGANT PORTFOLIO CSS
-   Like a sunrise - gentle, flowing, beautiful
-   ==================================== */
 
-/* Reset & Base Styles */
 * {
   margin: 0;
   padding: 0;
@@ -11,7 +6,6 @@
 }
 
 :root {
-  /* Colors - Inspired by sunrise and water */
   --primary-bg: #0a0a0f;
   --secondary-bg: #12121a;
   --accent-bg: #1a1a28;
@@ -34,8 +28,8 @@
   --space-xl: 6rem;
   
   /* Typography */
-  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-  --font-display: 'Playfair Display', serif;
+--font-primary: 'Plus Jakarta Sans', sans-serif;
+--font-display: 'DM Serif Display', serif;
   
   /* Transitions */
   --transition-smooth: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
