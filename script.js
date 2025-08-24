@@ -1,248 +1,297 @@
 // ====================================
-// ELEGANT PORTFOLIO JAVASCRIPT REFINED
-// Harmony between logic and presentation
+// ELEGANT PORTFOLIO JAVASCRIPT
+// Gentle interactions like morning light on water
 // ====================================
 
-/**
- * Standalone utility to throttle function execution.
- * @param {Function} func The function to throttle.
- * @param {number} limit The throttle limit in milliseconds.
- * @returns {Function} The throttled function.
- */
-const throttle = (func, limit) => {
-  let inThrottle;
-  return function(...args) {
-    const context = this;
-    if (!inThrottle) {
-      func.apply(context, args);
-      inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
-    }
-  };
-};
-
-/**
- * Standalone utility to debounce function execution.
- * @param {Function} func The function to debounce.
- * @param {number} wait The debounce wait time in milliseconds.
- * @returns {Function} The debounced function.
- */
-const debounce = (func, wait) => {
-  let timeout;
-  return function executedFunction(...args) {
-    const later = () => {
-      clearTimeout(timeout);
-      func(...args);
-    };
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-  };
-};
-
-/**
- * @class ElegantPortfolio
- * @description Manages all interactive elements and animations for the portfolio.
- */
 class ElegantPortfolio {
   constructor() {
-    // Centralized DOM element references
-    this.navBar = document.querySelector('.nav-bar');
-    this.navToggle = document.querySelector('.nav-toggle');
-    this.navMenu = document.querySelector('.nav-menu');
-    this.navLinks = document.querySelectorAll('.nav-link');
-    this.sections = document.querySelectorAll('.section[id]');
-    
+    this.isLoaded = false;
+    this.currentSection = 'home';
     this.typingIndex = 0;
-
-    this._init();
+    this.typingTexts = [
+      'Data-Driven Product Thinker',
+      'Aspiring Product Manager', 
+      'Analytics Architect'
+    ];
+    
+    this.init();
   }
 
-  /**
-   * Initializes all portfolio functionalities.
-   * @private
-   */
-  _init() {
-    this._setupEventListeners();
-    this._initTypingAnimation();
-    this._initObservers();
-    this._initSmoothScrolling();
-    this._initSkillsTabs();
-    this._initButtonRipples();
-    this._initHeroTilt();
-
-    // Graceful page load
-    window.addEventListener('load', () => {
+  init() {
+    this.setupEventListeners();
+    this.startTypingAnimation();
+    this.initScrollObserver();
+    this.initNavigation();
+    this.initSkillsTabs();
+    this.animateStats();
+    this.initSmoothScrolling();
+    this.initParallaxEffect();
+    
+    // Mark as loaded after a short delay
+    setTimeout(() => {
+      this.isLoaded = true;
       document.body.classList.add('loaded');
-    }, { once: true });
+    }, 500);
   }
-  
-  /**
-   * Sets up all core event listeners.
-   * @private
-   */
-  _setupEventListeners() {
-    window.addEventListener('scroll', throttle(() => this._handleScroll(), 16));
-    window.addEventListener('resize', debounce(() => this._handleResize(), 250));
+
+  setupEventListeners() {
+    // Smooth window load
+    window.addEventListener('load', () => {
+      this.handleWindowLoad();
+    });
+
+    // Gentle scroll handling
+    window.addEventListener('scroll', this.throttle(() => {
+      this.handleScroll();
+    }, 16));
+
+    // Responsive resize
+    window.addEventListener('resize', this.debounce(() => {
+      this.handleResize();
+    }, 250));
 
     // Mobile navigation toggle
-    if (this.navToggle && this.navMenu) {
-      this.navToggle.addEventListener('click', () => {
-        this.navToggle.classList.toggle('active');
-        this.navMenu.classList.toggle('active');
+    const navToggle = document.querySelector('.nav-toggle');
+    const navMenu = document.querySelector('.nav-menu');
+    
+    if (navToggle && navMenu) {
+      navToggle.addEventListener('click', () => {
+        navToggle.classList.toggle('active');
+        navMenu.classList.toggle('active');
       });
     }
 
-    // Close mobile menu on link click
-    this.navLinks.forEach(link => {
+    // Close mobile menu when clicking nav links
+    document.querySelectorAll('.nav-link').forEach(link => {
       link.addEventListener('click', () => {
-        this.navToggle?.classList.remove('active');
-        this.navMenu?.classList.remove('active');
+        navToggle?.classList.remove('active');
+        navMenu?.classList.remove('active');
       });
     });
+
+    // Button ripple effects
+    this.initButtonRipples();
   }
 
-  /**
-   * Initializes the hero section's typing animation.
-   * @private
-   */
-  _initTypingAnimation() {
-    const textLines = document.querySelectorAll('.typing-text .text-line');
-    if (!textLines.length) return;
+  // Smooth typing animation for hero titles
+  startTypingAnimation() {
+    const typingContainer = document.querySelector('.typing-text');
+    const textLines = document.querySelectorAll('.text-line');
+    
+    if (!typingContainer || !textLines.length) return;
 
     const showText = (index) => {
-      textLines.forEach(line => line.classList.remove('active'));
+      textLines.forEach(line => {
+        line.classList.remove('active');
+      });
+      
       if (textLines[index]) {
         textLines[index].classList.add('active');
       }
     };
 
-    showText(0); // Show first text immediately
+    // Start with first text
+    showText(0);
+
+    // Cycle through texts
     setInterval(() => {
       this.typingIndex = (this.typingIndex + 1) % textLines.length;
       showText(this.typingIndex);
     }, 3000);
   }
 
-  /**
-   * Initializes IntersectionObservers for scroll-triggered animations.
-   * @private
-   */
-  _initObservers() {
-    const animationObserver = new IntersectionObserver((entries, observer) => {
+  // Smooth scroll observer for section animations
+  initScrollObserver() {
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '-50px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
-          // Set delay from data-attribute if it exists
-          const delay = entry.target.dataset.animateDelay || '0s';
-          entry.target.style.transitionDelay = delay;
-          entry.target.classList.add('is-visible');
-          observer.unobserve(entry.target);
+          entry.target.classList.add('animate-in');
+          
+          // Trigger specific animations for different sections
+          this.triggerSectionAnimation(entry.target);
         }
       });
-    }, { threshold: 0.1 });
+    }, observerOptions);
 
-    // Observe any element with [data-animate]
-    document.querySelectorAll('[data-animate]').forEach(el => animationObserver.observe(el));
-
-    // Observer for animated stats
-    const statsObserver = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          this._animateStatNumber(entry.target);
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.8 });
-
-    document.querySelectorAll('.stat-number[data-target]').forEach(stat => statsObserver.observe(stat));
+    // Observe all sections and special elements
+    document.querySelectorAll('.section, .timeline-item, .skill-card, .project-card').forEach(el => {
+      observer.observe(el);
+    });
   }
-  
-  /**
-   * Handles scroll-related UI changes like header background and nav highlighting.
-   * @private
-   */
-  _handleScroll() {
-    const scrollY = window.scrollY;
 
-    // Update nav background opacity
-    if (this.navBar) {
-      const opacity = Math.min(scrollY / 100, 1);
-      this.navBar.style.backgroundColor = `rgba(10, 10, 15, ${0.8 + opacity * 0.2})`;
-    }
-
-    // Hide/show scroll indicator
-    const scrollIndicator = document.querySelector('.scroll-indicator');
-    if (scrollIndicator) {
-      scrollIndicator.style.opacity = scrollY > 100 ? '0' : '1';
-    }
+  triggerSectionAnimation(section) {
+    const sectionId = section.getAttribute('id');
     
-    // Update active nav link
-    this._updateActiveNav();
-    this._handleParallax();
+    switch (sectionId) {
+      case 'about':
+        this.animateTextReveal(section);
+        break;
+      case 'experience':
+        this.animateTimeline(section);
+        break;
+      case 'skills':
+        this.animateSkillCards(section);
+        break;
+      case 'projects':
+        this.animateProjects(section);
+        break;
+    }
   }
-  
-  /**
-   * Updates the active navigation link based on scroll position.
-   * @private
-   */
-  _updateActiveNav() {
-    const scrollPos = window.scrollY + (this.navBar?.offsetHeight || 80) + 20;
 
-    this.sections.forEach(section => {
-      if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
-        this.navLinks.forEach(link => {
-          link.classList.remove('active');
-          if (link.getAttribute('href') === `#${section.id}`) {
-            link.classList.add('active');
+  // Gentle text reveal animation
+  animateTextReveal(section) {
+    const textElements = section.querySelectorAll('.text-reveal');
+    textElements.forEach((el, index) => {
+      setTimeout(() => {
+        el.style.opacity = '1';
+        el.style.transform = 'translateY(0)';
+      }, index * 200);
+    });
+  }
+
+  // Timeline flow animation
+  animateTimeline(section) {
+    const timelineItems = section.querySelectorAll('.timeline-item');
+    timelineItems.forEach((item, index) => {
+      setTimeout(() => {
+        item.style.opacity = '1';
+        item.style.transform = 'translateX(0)';
+      }, index * 300);
+    });
+  }
+
+  // Floating skill cards animation
+  animateSkillCards(section) {
+    const skillCards = section.querySelectorAll('.skill-card');
+    skillCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0)';
+      }, index * 150);
+    });
+  }
+
+  // Project cards cascade
+  animateProjects(section) {
+    const projectCards = section.querySelectorAll('.project-card');
+    projectCards.forEach((card, index) => {
+      setTimeout(() => {
+        card.style.opacity = '1';
+        card.style.transform = 'translateY(0) scale(1)';
+      }, index * 200);
+    });
+  }
+
+  // Navigation highlighting and smooth scrolling
+  initNavigation() {
+    const navLinks = document.querySelectorAll('.nav-link');
+    const sections = document.querySelectorAll('.section[id]');
+
+    // Highlight active navigation based on scroll position
+    const updateActiveNav = () => {
+      const scrollPos = window.scrollY + 100;
+
+      sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionId = section.getAttribute('id');
+
+        if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+          navLinks.forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+              link.classList.add('active');
+              this.currentSection = sectionId;
+            }
+          });
+        }
+      });
+    };
+
+    window.addEventListener('scroll', this.throttle(updateActiveNav, 100));
+  }
+
+  // Skills section tab switching
+  initSkillsTabs() {
+    const categoryTabs = document.querySelectorAll('.category-tab');
+    const skillGroups = document.querySelectorAll('.skill-group');
+
+    categoryTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        const targetCategory = tab.getAttribute('data-category');
+
+        // Update active tab
+        categoryTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        // Show corresponding skill group with smooth transition
+        skillGroups.forEach(group => {
+          group.classList.remove('active');
+          if (group.getAttribute('data-category') === targetCategory) {
+            setTimeout(() => {
+              group.classList.add('active');
+              this.animateSkillCards(group);
+            }, 150);
           }
         });
-      }
+      });
     });
   }
 
-  /**
-   * Handles hero parallax effect on scroll.
-   * @private
-   */
-  _handleParallax() {
-    const scrolled = window.pageYOffset;
-    const shapes = document.querySelectorAll('.shape');
-    const profileRings = document.querySelectorAll('.ring');
+  // Animated counters for stats
+  animateStats() {
+    const statNumbers = document.querySelectorAll('.stat-number[data-target]');
+    
+    const animateNumber = (element) => {
+      const target = parseInt(element.getAttribute('data-target'));
+      const duration = 2000;
+      const step = target / (duration / 16);
+      let current = 0;
 
-    shapes.forEach((shape, index) => {
-      const speed = 0.1 + (index * 0.05);
-      shape.style.transform = `translateY(${scrolled * speed}px)`;
+      const updateNumber = () => {
+        current += step;
+        if (current >= target) {
+          element.textContent = target;
+        } else {
+          element.textContent = Math.floor(current);
+          requestAnimationFrame(updateNumber);
+        }
+      };
+
+      updateNumber();
+    };
+
+    // Trigger animation when stats come into view
+    const statsObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateNumber(entry.target);
+          statsObserver.unobserve(entry.target);
+        }
+      });
     });
 
-    profileRings.forEach((ring, index) => {
-      const rotation = scrolled * (0.05 + index * 0.02);
-      ring.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+    statNumbers.forEach(stat => {
+      statsObserver.observe(stat);
     });
   }
-  
-  /**
-   * Handles window resize events, like closing the mobile menu.
-   * @private
-   */
-  _handleResize() {
-    if (window.innerWidth > 768) {
-      this.navToggle?.classList.remove('active');
-      this.navMenu?.classList.remove('active');
-    }
-  }
 
-  /**
-   * Initializes smooth scrolling for all internal anchor links.
-   * @private
-   */
-  _initSmoothScrolling() {
+  // Smooth scrolling for all internal links
+  initSmoothScrolling() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       anchor.addEventListener('click', (e) => {
         e.preventDefault();
-        const targetId = anchor.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
+        const targetId = anchor.getAttribute('href').substring(1);
+        const targetElement = document.getElementById(targetId);
 
         if (targetElement) {
-          const offsetTop = targetElement.offsetTop - (this.navBar?.offsetHeight || 80);
+          const offsetTop = targetElement.offsetTop - 80; // Account for fixed nav
+          
           window.scrollTo({
             top: offsetTop,
             behavior: 'smooth'
@@ -252,145 +301,205 @@ class ElegantPortfolio {
     });
   }
 
-  /**
-   * Initializes tab functionality for the skills section.
-   * @private
-   */
-  _initSkillsTabs() {
-    const categoryTabs = document.querySelectorAll('.category-tab');
-    const skillGroups = document.querySelectorAll('.skill-group');
+  // Subtle parallax effect for hero section
+  initParallaxEffect() {
+    const heroSection = document.querySelector('.hero');
+    const profileRings = document.querySelectorAll('.ring');
+    
+    if (!heroSection) return;
 
-    categoryTabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        const targetCategory = tab.dataset.category;
-
-        categoryTabs.forEach(t => t.classList.remove('active'));
-        tab.classList.add('active');
-
-        skillGroups.forEach(group => {
-          group.classList.remove('active');
-          if (group.dataset.category === targetCategory) {
-            group.classList.add('active');
-          }
-        });
+    const handleParallax = () => {
+      const scrolled = window.pageYOffset;
+      const rate = scrolled * -0.5;
+      
+      // Move background shapes
+      const shapes = document.querySelectorAll('.shape');
+      shapes.forEach((shape, index) => {
+        const speed = 0.2 + (index * 0.1);
+        shape.style.transform = `translateY(${scrolled * speed}px)`;
       });
-    });
-  }
 
-  /**
-   * Animates a single stat number from 0 to its target value.
-   * @param {HTMLElement} element The stat number element.
-   * @private
-   */
-  _animateStatNumber(element) {
-    const target = parseInt(element.dataset.target, 10);
-    const duration = 2000;
-    let start = 0;
-    const stepTime = 16; // roughly 60fps
-
-    const step = () => {
-      start += target / (duration / stepTime);
-      if (start >= target) {
-        element.textContent = target;
-      } else {
-        element.textContent = Math.floor(start);
-        requestAnimationFrame(step);
-      }
+      // Rotate profile rings at different speeds
+      profileRings.forEach((ring, index) => {
+        const rotation = scrolled * (0.1 + index * 0.05);
+        ring.style.transform = `translate(-50%, -50%) rotate(${rotation}deg)`;
+      });
     };
-    requestAnimationFrame(step);
+
+    window.addEventListener('scroll', this.throttle(handleParallax, 16));
   }
-  
-  /**
-   * Initializes the ripple effect for all elements with a .btn class.
-   * @private
-   */
-  _initButtonRipples() {
+
+  // Button ripple effect
+  initButtonRipples() {
     document.querySelectorAll('.btn').forEach(button => {
       button.addEventListener('click', (e) => {
-        // Ensure ripple element exists
-        let ripple = button.querySelector('.btn-ripple');
-        if (!ripple) {
-          ripple = document.createElement('span');
-          ripple.className = 'btn-ripple';
-          button.appendChild(ripple);
-        }
-        
-        // Remove old animation class
-        ripple.classList.remove('animate');
-        
+        const ripple = button.querySelector('.btn-ripple');
+        if (!ripple) return;
+
         const rect = button.getBoundingClientRect();
         const size = Math.max(rect.width, rect.height);
         const x = e.clientX - rect.left - size / 2;
         const y = e.clientY - rect.top - size / 2;
 
-        ripple.style.width = ripple.style.height = `${size}px`;
-        ripple.style.left = `${x}px`;
-        ripple.style.top = `${y}px`;
-
-        // Trigger animation
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        ripple.style.width = size + 'px';
+        ripple.style.height = size + 'px';
+        
         ripple.classList.add('animate');
+        
+        setTimeout(() => {
+          ripple.classList.remove('animate');
+        }, 600);
       });
     });
   }
+
+  // Handle scroll events
+  handleScroll() {
+    const scrollY = window.scrollY;
+    
+    // Update navigation background opacity
+    const nav = document.querySelector('.nav-bar');
+    if (nav) {
+      const opacity = Math.min(scrollY / 100, 1);
+      nav.style.backgroundColor = `rgba(10, 10, 15, ${0.8 + opacity * 0.2})`;
+    }
+
+    // Hide/show scroll indicator
+    const scrollIndicator = document.querySelector('.scroll-indicator');
+    if (scrollIndicator) {
+      scrollIndicator.style.opacity = scrollY > 100 ? '0' : '1';
+    }
+  }
+
+  // Handle window load
+  handleWindowLoad() {
+    // Fade in sections sequentially
+    const sections = document.querySelectorAll('.section');
+    sections.forEach((section, index) => {
+      setTimeout(() => {
+        section.style.opacity = '1';
+        section.style.transform = 'translateY(0)';
+      }, index * 100);
+    });
+  }
+
+  // Handle window resize
+  handleResize() {
+    // Close mobile menu on resize to desktop
+    if (window.innerWidth > 768) {
+      const navToggle = document.querySelector('.nav-toggle');
+      const navMenu = document.querySelector('.nav-menu');
+      
+      navToggle?.classList.remove('active');
+      navMenu?.classList.remove('active');
+    }
+  }
+
+  // Utility: Throttle function
+  throttle(func, limit) {
+    let inThrottle;
+    return function() {
+      const args = arguments;
+      const context = this;
+      if (!inThrottle) {
+        func.apply(context, args);
+        inThrottle = true;
+        setTimeout(() => inThrottle = false, limit);
+      }
+    }
+  }
+
+  // Utility: Debounce function
+  debounce(func, wait) {
+    let timeout;
+    return function executedFunction(...args) {
+      const later = () => {
+        clearTimeout(timeout);
+        func(...args);
+      };
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+    };
+  }
 }
 
-
-/**
- * @class ParticleBackground
- * @description Creates an interactive Three.js particle background.
- */
+// Enhanced Three.js Background (Optional beautiful addition)
 class ParticleBackground {
   constructor() {
-    // Only run on larger screens and if Three.js is loaded
-    if (typeof THREE === 'undefined' || window.innerWidth <= 768) return;
-
-    this.mouse = new THREE.Vector2();
-    this.init();
+    this.scene = null;
+    this.camera = null;
+    this.renderer = null;
+    this.particles = null;
+    this.mouse = { x: 0, y: 0 };
+    
+    if (window.innerWidth > 768) { // Only on desktop for performance
+      this.init();
+    }
   }
 
   init() {
-    this._createScene();
-    this._createParticles();
-    this._setupEventListeners();
-    this._animate();
+    // Only initialize if Three.js is available
+    if (typeof THREE === 'undefined') return;
+
+    this.createScene();
+    this.createParticles();
+    this.setupEventListeners();
+    this.animate();
   }
-  
-  _createScene() {
+
+  createScene() {
+    // Scene
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+
+    // Camera
+    this.camera = new THREE.PerspectiveCamera(
+      75, 
+      window.innerWidth / window.innerHeight, 
+      0.1, 
+      1000
+    );
     this.camera.position.z = 5;
 
-    this.renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    // Renderer
+    this.renderer = new THREE.WebGLRenderer({ 
+      alpha: true, 
+      antialias: true 
+    });
     this.renderer.setSize(window.innerWidth, window.innerHeight);
-    this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     this.renderer.setClearColor(0x000000, 0);
-
+    
+    // Insert canvas as background
     const canvas = this.renderer.domElement;
     canvas.style.position = 'fixed';
     canvas.style.top = '0';
     canvas.style.left = '0';
+    canvas.style.width = '100%';
+    canvas.style.height = '100%';
     canvas.style.zIndex = '-1';
     canvas.style.pointerEvents = 'none';
+    
     document.body.appendChild(canvas);
   }
 
-  _createParticles() {
-    const particleCount = 200;
+  createParticles() {
+    const particleCount = 100;
+    const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(particleCount * 3);
     const colors = new Float32Array(particleCount * 3);
-    const geometry = new THREE.BufferGeometry();
 
     for (let i = 0; i < particleCount; i++) {
       const i3 = i * 3;
+      
       positions[i3] = (Math.random() - 0.5) * 10;
       positions[i3 + 1] = (Math.random() - 0.5) * 10;
       positions[i3 + 2] = (Math.random() - 0.5) * 10;
       
-      const baseColor = new THREE.Color(0x6a82fb); // A nice base violet-blue
-      baseColor.offsetHSL(Math.random() * 0.2 - 0.1, 0.1, Math.random() * 0.2 - 0.1);
-      colors[i3] = baseColor.r;
-      colors[i3 + 1] = baseColor.g;
-      colors[i3 + 2] = baseColor.b;
+      // Gentle blue-purple colors
+      colors[i3] = 0.4 + Math.random() * 0.4;     // Red
+      colors[i3 + 1] = 0.5 + Math.random() * 0.3; // Green
+      colors[i3 + 2] = 0.8 + Math.random() * 0.2; // Blue
     }
 
     geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
@@ -400,110 +509,91 @@ class ParticleBackground {
       size: 0.05,
       vertexColors: true,
       transparent: true,
-      opacity: 0.7,
-      blending: THREE.AdditiveBlending,
-      depthWrite: false,
+      opacity: 0.6,
+      blending: THREE.AdditiveBlending
     });
 
     this.particles = new THREE.Points(geometry, material);
     this.scene.add(this.particles);
   }
 
-  _setupEventListeners() {
+  setupEventListeners() {
+    // Mouse movement
     document.addEventListener('mousemove', (e) => {
       this.mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
       this.mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
     });
 
-    window.addEventListener('resize', debounce(() => {
+    // Resize handling
+    window.addEventListener('resize', () => {
+      if (!this.camera || !this.renderer) return;
+      
       this.camera.aspect = window.innerWidth / window.innerHeight;
       this.camera.updateProjectionMatrix();
       this.renderer.setSize(window.innerWidth, window.innerHeight);
-      this.renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    }, 100));
+    });
   }
 
-  _animate() {
-    requestAnimationFrame(() => this._animate());
+  animate() {
+    if (!this.particles) return;
 
-    const elapsedTime = new Date().getTime() * 0.0001;
-    this.particles.rotation.y = elapsedTime;
-    
-    // Gentle mouse follow
-    this.camera.position.x += (this.mouse.x * 0.5 - this.camera.position.x) * 0.02;
-    this.camera.position.y += (-this.mouse.y * 0.5 - this.camera.position.y) * 0.02;
-    this.camera.lookAt(this.scene.position);
+    requestAnimationFrame(() => this.animate());
+
+    // Gentle rotation
+    this.particles.rotation.x += 0.0005;
+    this.particles.rotation.y += 0.001;
+
+    // Subtle mouse interaction
+    this.particles.rotation.x += this.mouse.y * 0.0002;
+    this.particles.rotation.y += this.mouse.x * 0.0002;
 
     this.renderer.render(this.scene, this.camera);
   }
 }
 
-// ====================================
-// APP INITIALIZATION
-// ====================================
+// Initialize everything when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
-  new ElegantPortfolio();
+  // Main portfolio functionality
+  const portfolio = new ElegantPortfolio();
   
-  // Optional: Activate particles with a query parameter e.g., yoursite.com?particles=true
-  const urlParams = new URLSearchParams(window.location.search);
-  if (urlParams.has('particles')) {
+  // Optional Three.js background
+  if (window.location.search.includes('particles')) {
     new ParticleBackground();
   }
-
-  // Inject necessary CSS for animations.
-  // In a real project, this should be in your main CSS file.
+  
+  // Add some CSS classes for enhanced animations
   const style = document.createElement('style');
   style.textContent = `
-    [data-animate] {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.165, 0.84, 0.44, 1), transform 0.8s cubic-bezier(0.165, 0.84, 0.44, 1);
-    }
-    [data-animate="fade-in-left"] { transform: translateX(-30px); }
-    [data-animate="fade-in-right"] { transform: translateX(30px); }
-    
-    [data-animate].is-visible {
-      opacity: 1;
-      transform: translate(0, 0);
-    }
-    
-    .btn {
-      position: relative;
-      overflow: hidden;
-    }
-    .btn-ripple {
-      position: absolute;
-      border-radius: 50%;
-      background-color: rgba(255, 255, 255, 0.3);
-      transform: scale(0);
-      pointer-events: none;
-    }
     .btn-ripple.animate {
       animation: ripple 0.6s ease-out;
     }
+    
     @keyframes ripple {
       to {
-        transform: scale(4);
+        transform: translate(-50%, -50%) scale(1);
         opacity: 0;
+      }
+    }
+    
+    .animate-in {
+      animation: gentleFadeIn 0.8s ease forwards;
+    }
+    
+    @keyframes gentleFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
       }
     }
   `;
   document.head.appendChild(style);
 });
-  _initHeroTilt() {
-    const heroVisual = document.querySelector('.hero-visual');
-    if (!heroVisual) return;
 
-    heroVisual.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
-    heroVisual.addEventListener('mousemove', (e) => {
-      const rect = heroVisual.getBoundingClientRect();
-      const x = e.clientX - rect.left;
-      const y = e.clientY - rect.top;
-      const rotateX = (y - rect.height / 2) / 15;
-      const rotateY = -(x - rect.width / 2) / 15;
-      heroVisual.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
-    });
-    heroVisual.addEventListener('mouseleave', () => {
-      heroVisual.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
-    });
-  }
+// Export for potential external use
+if (typeof module !== 'undefined' && module.exports) {
+  module.exports = { ElegantPortfolio, ParticleBackground };
+}
