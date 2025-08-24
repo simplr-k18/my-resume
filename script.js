@@ -68,6 +68,7 @@ class ElegantPortfolio {
     this._initSmoothScrolling();
     this._initSkillsTabs();
     this._initButtonRipples();
+    this._initHeroTilt();
 
     // Graceful page load
     window.addEventListener('load', () => {
@@ -489,3 +490,20 @@ document.addEventListener('DOMContentLoaded', () => {
   `;
   document.head.appendChild(style);
 });
+  _initHeroTilt() {
+    const heroVisual = document.querySelector('.hero-visual');
+    if (!heroVisual) return;
+
+    heroVisual.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+    heroVisual.addEventListener('mousemove', (e) => {
+      const rect = heroVisual.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      const rotateX = (y - rect.height / 2) / 15;
+      const rotateY = -(x - rect.width / 2) / 15;
+      heroVisual.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
+    });
+    heroVisual.addEventListener('mouseleave', () => {
+      heroVisual.style.transform = 'perspective(1000px) rotateX(0) rotateY(0)';
+    });
+  }
