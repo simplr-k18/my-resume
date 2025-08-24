@@ -385,7 +385,11 @@ body {
 .typing-text {
   font-size: 1.5rem;
   font-weight: 500;
-  color: var(--text-secondary);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 0 12px rgba(102, 126, 234, 0.12);
 }
 
 .text-line {
@@ -1643,7 +1647,43 @@ body {
     break-inside: avoid;
     page-break-inside: avoid;
   }
-  
+
+  /* ====== Polish: breathing room + soft borders ====== */
+.timeline-content,
+.skill-card,
+.project-card,
+.education-card,
+.contact-card,
+.visual-card {
+  padding: calc(var(--space-lg) * 1.2);  /* extra breathing space */
+  border: 1px solid rgba(255,255,255,0.08); /* subtle border */
+  border-radius: 1rem;  /* softer corners */
+  background: rgba(255,255,255,0.02); /* faint glass effect */
+  box-shadow: 0 8px 24px rgba(0,0,0,0.25); /* elegant shadow */
+  line-height: 1.7;
+}
+
+/* Ensure inner text never sticks to borders */
+.timeline-content p,
+.project-content p,
+.skill-card p,
+.education-details p,
+.contact-info p {
+  margin-bottom: var(--space-sm);
+}
+.btn-primary {
+  background: var(--gradient-primary);
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  box-shadow: 0 8px 28px rgba(102,126,234,0.18);
+}
+
+.btn-primary:hover {
+  background-position: 100% 0;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 40px rgba(102,126,234,0.28);
+}
+
   body {
     background: white;
     color: black;
