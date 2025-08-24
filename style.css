@@ -385,11 +385,7 @@ body {
 .typing-text {
   font-size: 1.5rem;
   font-weight: 500;
-  background: var(--gradient-primary);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-  text-shadow: 0 0 12px rgba(102, 126, 234, 0.12);
+  color: var(--text-secondary);
 }
 
 .text-line {
